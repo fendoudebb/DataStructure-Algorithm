@@ -21,8 +21,8 @@ func main() {
 	singlyLinkedList.Update(1, "111111111111")
 	singlyLinkedList.Update(3, "333333333333")
 
-	singlyLinkedList.Delete(4)
 	singlyLinkedList.Delete(5)
+	singlyLinkedList.Delete(4)
 	singlyLinkedList.Delete(1)
 
 	singlyLinkedList.Print()
