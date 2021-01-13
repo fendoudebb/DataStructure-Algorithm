@@ -4,7 +4,7 @@ import "fmt"
 
 // 空一个位置
 func main() {
-	queue := NewCircleArrayQueue(3)
+	queue := &CircleArrayQueue{arr: make([]int, 3)}
 	queue.Add(1)
 	queue.Add(2)
 	queue.Get()
@@ -13,21 +13,12 @@ func main() {
 	queue.Add(4)
 	queue.ShowQueue()
 	fmt.Println("circle queue size#", queue.Size())
-
 }
 
 type CircleArrayQueue struct {
 	head int
 	tail int
 	arr  []int
-}
-
-func NewCircleArrayQueue(size int) *CircleArrayQueue {
-	instance := new(CircleArrayQueue)
-	instance.head = 0
-	instance.tail = 0
-	instance.arr = make([]int, size)
-	return instance
 }
 
 func (queue *CircleArrayQueue) IsFull() bool {
