@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	queue := NewArrayQueue(3)
+	queue := &ArrayQueue{arr: make([]int, 3)}
 	queue.Add(1)
 	queue.Add(2)
 	queue.Add(3)
@@ -20,49 +20,41 @@ type ArrayQueue struct {
 	arr  []int
 }
 
-func NewArrayQueue(size int) *ArrayQueue {
-	instance := new(ArrayQueue)
-	instance.head = 0
-	instance.tail = 0
-	instance.arr = make([]int, size)
-	return instance
+func (queue *ArrayQueue) IsFull() bool {
+	return queue.tail == len(queue.arr)
 }
 
-func (receiver *ArrayQueue) IsFull() bool {
-	return receiver.tail == len(receiver.arr)
+func (queue *ArrayQueue) IsEmpty() bool {
+	return queue.head == queue.tail
 }
 
-func (receiver *ArrayQueue) IsEmpty() bool {
-	return receiver.head == receiver.tail
-}
-
-func (receiver *ArrayQueue) Add(element int) {
-	if receiver.IsFull() {
+func (queue *ArrayQueue) Add(element int) {
+	if queue.IsFull() {
 		panic("队列已满，无法加入")
 	}
-	receiver.arr[receiver.tail] = element
-	receiver.tail++
+	queue.arr[queue.tail] = element
+	queue.tail++
 }
 
-func (receiver *ArrayQueue) Get() int {
-	if receiver.IsEmpty() {
+func (queue *ArrayQueue) Get() int {
+	if queue.IsEmpty() {
 		panic("队列为空，无法获取")
 	}
 	defer func() {
-		receiver.head++
+		queue.head++
 	}()
-	return receiver.arr[receiver.head]
+	return queue.arr[queue.head]
 }
 
-func (receiver *ArrayQueue) Size() int {
-	return receiver.tail - receiver.head
+func (queue *ArrayQueue) Size() int {
+	return queue.tail - queue.head
 }
 
-func (receiver *ArrayQueue) ShowQueue() {
-	if receiver.IsEmpty() {
+func (queue *ArrayQueue) ShowQueue() {
+	if queue.IsEmpty() {
 		return
 	}
-	for i := receiver.head; i < receiver.tail; i++ {
-		fmt.Println(receiver.arr[i])
+	for i := queue.head; i < queue.tail; i++ {
+		fmt.Println(queue.arr[i])
 	}
 }
