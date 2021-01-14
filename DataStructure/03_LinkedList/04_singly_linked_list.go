@@ -35,7 +35,7 @@ func main() {
 	singlyLinkedList.Print()
 	fmt.Println("链表长度#", singlyLinkedList.Length())
 
-	fmt.Println("-------------")
+	fmt.Println("------Reverse Print-------")
 	singlyLinkedList.Reverse().Print()
 
 
@@ -115,9 +115,7 @@ func (list *SinglyLinkedList) Insert(no int, name string) {
 		}
 		node.Next = temp.Next
 		temp.Next = node
-
 	}
-
 }
 
 func (list *SinglyLinkedList) Update(no int, name string) {
@@ -133,7 +131,6 @@ func (list *SinglyLinkedList) Update(no int, name string) {
 	if temp != nil {
 		temp.Name = name
 	}
-
 }
 
 func (list *SinglyLinkedList) Delete(no int) {
@@ -152,7 +149,6 @@ func (list *SinglyLinkedList) Delete(no int) {
 		}
 		temp = temp.Next
 	}
-
 	temp.Next = temp.Next.Next
 }
 
@@ -248,7 +244,5 @@ func MergeTwoOrderLinkedList(first, second *SinglyLinkedList) *SinglyLinkedList 
 		}
 		temp2 = next
 	}
-
 	return first
-
 }
