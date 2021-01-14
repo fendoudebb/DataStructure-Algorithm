@@ -76,13 +76,12 @@ func (list *DoublyLinkedList) Insert(no int, name string) {
 				// 到了链表末尾，此时插入的节点 No 数值最大
 				node.Pre = temp
 				temp.Next = node
-				// 末尾新增了一个节点，必须break，否则将将无限加入
+				// 末尾新增了一个节点，必须break，否则将无限循环
 				break
 			}
 		}
 		temp = temp.Next
 	}
-
 }
 
 func (list *DoublyLinkedList) Insert2(no int, name string) {
@@ -116,7 +115,6 @@ func (list *DoublyLinkedList) Insert2(no int, name string) {
 		}
 		temp.Next = node
 	}
-
 }
 
 func (list *DoublyLinkedList) Delete(no int) {
@@ -131,7 +129,6 @@ func (list *DoublyLinkedList) Delete(no int) {
 		}
 		temp = temp.Next
 	}
-
 }
 
 func (list *DoublyLinkedList) Print() {
