@@ -4,6 +4,7 @@ import "log"
 
 func main() {
 	arr := []int{10, 20, 5, 0}
+	log.Println(arr)
 	for i := 1; i < len(arr); i++ {
 		j := i
 		insertVal := arr[i] // 一定要使用临时变量接收，如果在循环中用 arr[i]获取，其实值已经变为移动后的值了
@@ -13,15 +14,13 @@ func main() {
 			j--
 		}
 		arr[j] = insertVal
-		log.Println(arr)
+		log.Println("第", i, "次排序", arr)
 	}
-
 
 }
 
-func InsertSortEvolution()  {
+func InsertSortEvolution() {
 	arr := []int{10, 20, 5, 0}
-
 
 	// 将 [10] 看作有序数组，[20, 5, 0] 看作无序数组
 	insertVal := arr[1]
@@ -31,8 +30,7 @@ func InsertSortEvolution()  {
 		j--
 	}
 	arr[j+1] = insertVal
-	log.Println(arr)
-
+	log.Println("第1次排序", arr)
 
 	// 将 [10, 20] 看作有序数组，[5, 0] 看作无序数组
 	insertVal = arr[2]
@@ -43,7 +41,7 @@ func InsertSortEvolution()  {
 	}
 	arr[j+1] = insertVal
 	log.Println(arr)
-
+	log.Println("第2次排序", arr)
 
 	// 将 [5, 10, 20] 看作有序数组，[0] 看作无序数组
 	insertVal = arr[3]
@@ -54,6 +52,7 @@ func InsertSortEvolution()  {
 	}
 	arr[j+1] = insertVal
 	log.Println(arr)
+	log.Println("第3次排序", arr)
 }
 
 func Demo() {
